@@ -30,11 +30,20 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-  var paramValue = getParameterByName('q');
-  var stringTemplate = db[0][1] + paramValue + db[0][2];
-  var svgImage = document.getElementById("img_0");
-  svgImage.setAttribute("href", stringTemplate);
-  console.log(stringTemplate)
+  var tokenAddress = getParameterByName('a');
+  var tokenID = getParameterByName('q');
+  // Loop through the array of arrays
+  for (var i = 0; i < db.length; i++) {
+    if (matrix[i][0] === tokenAddress) {
+        console.log("Array found:", matrix[i]);
+          var stringTemplate = db[i][1] + tokenID + db[i][2];
+          var svgImage = document.getElementById("img_0");
+          svgImage.setAttribute("href", stringTemplate);
+          console.log(stringTemplate)
+        break; // Break the loop since we found the array
+    }
+ }
+
 </script>
 </body>
 </html>
