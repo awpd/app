@@ -12,6 +12,9 @@
     </svg>
 
 <script>
+var db = [
+    ["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png"],
+];
 var svgElement = document.getElementById("svgContainer");
 var serializer = new XMLSerializer();
 var svgString = serializer.serializeToString(svgElement);
@@ -28,7 +31,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
   var paramValue = getParameterByName('q');
-  var stringTemplate = "https://www.miladymaker.net/milady/" + paramValue + ".png";
+  var stringTemplate = db[0][1] + paramValue + db[0][2];
   var svgImage = document.getElementById("img_0");
   svgImage.setAttribute("href", stringTemplate);
   console.log(stringTemplate)
