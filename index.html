@@ -37,7 +37,7 @@ function getParameterByName(name, url) {
   for (var i = 0; i < db.length; i++) {
     if (db[i][0] === tokenAddress) {
           var tokenTemplate = db[i][1] + tokenID + db[i][2];
-          var gunTemplate = db[i][3 + gunID];
+          var gunTemplate = db[i][3 + parseInt(gunID)];
           var svgImage_0 = document.getElementById("img_0");
           svgImage_0.setAttribute("href", tokenTemplate);
           var svgImage_1 = document.getElementById("img_1");
