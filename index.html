@@ -34,8 +34,7 @@ function getParameterByName(name, url) {
   var tokenID = getParameterByName('q');
   // Loop through the array of arrays
   for (var i = 0; i < db.length; i++) {
-    if (matrix[i][0] === tokenAddress) {
-        console.log("Array found:", matrix[i]);
+    if (db[i][0] === tokenAddress) {
           var stringTemplate = db[i][1] + tokenID + db[i][2];
           var svgImage = document.getElementById("img_0");
           svgImage.setAttribute("href", stringTemplate);
