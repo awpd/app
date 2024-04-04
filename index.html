@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layered Images</title>
+</head>
+  <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
+    <svg id="svgContainer" style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" xmlns="http://www.w3.org/2000/svg" width="588" height="735">
+        <image id="img_0" href=""  width="588" height="735"/>
+        <image id="img_1" href="https://i.ibb.co/CJFR0Lx/awp-for-milady.png"  width="588" height="735"/>
+    </svg>
+<script>
+var svgElement = document.getElementById("svgContainer");
+var serializer = new XMLSerializer();
+var svgString = serializer.serializeToString(svgElement);
+var encodedSvg = btoa(svgString);
+console.log("data:image/svg+xml;base64," + encodedSvg)
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+            var paramValue = getParameterByName('q');
+            var stringTemplate = "https://www.miladymaker.net/milady/" + paramValue + ".png";
+            document.getElementById("img_0").href = stringTemplate;
+            console.log(stringTemplate)
+</script>
+</body>
+</html>
