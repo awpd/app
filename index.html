@@ -25,7 +25,7 @@
   <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
     <canvas id="combinedCanvas" width="588" height="735"></canvas>
     <script>
-
+      canvas.addEventListener("click", mouseClickEvent, false);
       function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
