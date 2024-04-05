@@ -19,14 +19,16 @@
             var tokenAddress = getParameterByName('a');
             var tokenID = getParameterByName('q');
             var gunID = getParameterByName('g');
+
+            var db_token = [
+                ["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png", 10000, [https://i.ibb.co/CJFR0Lx/awp-for-milady.png]]
+            ];
             var rng = Math.floor(Math.random() * db_token.length);
             console.log(rng);
-            var db_token = [["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png"]];
-            var db_skin = [["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"]];
             for (var i = 0; i < db_token.length; i++) {
                 if (db_token[i][0] === tokenAddress) {
                     var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
-                    var gunTemplate = db_skin[i][0 + parseInt(gunID)];
+                    var gunTemplate = db_token[i][4][0 + parseInt(gunID)];
                     var canvas = document.getElementById('combinedCanvas');
                     var ctx = canvas.getContext('2d');
                     var img1 = new Image();
