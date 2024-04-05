@@ -46,21 +46,6 @@ function getParameterByName(name, url) {
           break; 
     }
  }
-  // Find the element by its ID
-var element = document.getElementById("svgContainer");
-if (element) {
-    // Create a mouse event
-    var event = new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window
-    });
-
-    // Dispatch the event on the element
-    element.dispatchEvent(event);
-} else {
-    console.error("Element with ID 'svgContainer' not found.");
-}
 </script>
 </body>
 </html>
