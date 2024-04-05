@@ -19,11 +19,19 @@
             max-height: 100%;
             width: auto;
             height: auto;
+            display: none;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
   <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
     <canvas id="combinedCanvas" width="588" height="735"></canvas>
+    <img id="myImage" src="" alt="Canvas Image">
     <script>
     
       function getParameterByName(name, url) {
@@ -73,7 +81,16 @@
 
         // Call drawImages to start drawing images on the canvas
         drawImages();
+         var canvas = document.getElementById('combinedCanvas');
+        var ctx = canvas.getContext('2d');
+        var img = document.getElementById('myImage');
 
+        // Draw something on the canvas
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, 200, 200);
+
+        // Convert canvas to image
+        img.src = canvas.toDataURL(); // This converts the canvas to a data URL which can be used as the src for an image
           break; 
     }
  }
