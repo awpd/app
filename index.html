@@ -60,7 +60,7 @@
         function drawImages() {
             // Ensure both images are loaded before drawing
             if (img1.complete && img2.complete) {
-                ctx.drawImage(img1, 0, 0, canvas.width / 2, canvas.height);
+                ctx.drawImage(img1, 0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
             } else {
                 // If one or both images are not loaded, wait for them to load and then draw
