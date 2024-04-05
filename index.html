@@ -41,7 +41,7 @@ function getParameterByName(name, url) {
           var serializer = new XMLSerializer();
           var svgString = serializer.serializeToString(svgElement);
           var encodedSvg = btoa(svgString);
-          document.getElementById("svgOutput").src = "data:image/svg+xml;base64," + encodedSvg;
+          document.getElementById("svgOutput").setAttribute("src", "data:image/svg+xml;base64," + encodedSvg);
           break; 
     }
  }
