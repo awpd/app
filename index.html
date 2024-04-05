@@ -29,7 +29,7 @@
             var tokenID;
             var skinID;
             if (_tokenAddress === null) {
-                tokenAddress = db_token[rngAddress];
+                tokenAddress = db_token[rngAddress][0];
                 tokenID = rngToken;
                 skinID = rngSkin;
                 console.log(tokenAddress, tokenID, skinID)
