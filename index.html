@@ -7,8 +7,10 @@
 </head>
   <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
     <svg id="svgContainer" style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" xmlns="http://www.w3.org/2000/svg" width="588" height="735">
-        <image id="img_0" href="" width="588" height="735"/>
+        <g id="imageGroup">
+      <image id="img_0" href="" width="588" height="735"/>
         <image id="img_1" href=""  width="588" height="735"/>
+          </g>
     </svg>
 
 <script>
@@ -45,34 +47,6 @@ function getParameterByName(name, url) {
           break; 
     }
  }
-
-
-// Add an event listener for left-click
-document.addEventListener('click', function(event) {
-    // Check if left-click
-    if (event.button === 0) { // 0 represents left-click
-        // Call downloadImage function with SVG element as parameter
-        downloadImage(event.target);
-    }
-});
-
-// Modified downloadImage function to accept SVG element as parameter
-function downloadImage(svgElement) {
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    var img = new Image();
-    img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL('image/png');
-        a.download = 'image.png';
-        a.click();
-    };
-    var svgString = new XMLSerializer().serializeToString(svgElement);
-    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
-}
 </script>
 </body>
 </html>
