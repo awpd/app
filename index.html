@@ -1,85 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>awpd</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <title>awpd</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        canvas {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            -webkit-touch-callout: default; /* Enable default touch callout */
-        }
-    </style>
-</head>
-  <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
-    <canvas id="combinedCanvas" width="588" height="735"></canvas>
-    <script>
-    
-      function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-      var tokenAddress = getParameterByName('a');
-  var tokenID = getParameterByName('q');
-  var gunID = getParameterByName('g');
-      
-        // Get inputs
-        var db = [
-          ["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png", "https://i.ibb.co/CJFR0Lx/awp-for-milady.png"],
-        ];
- 
-      for (var i = 0; i < db.length; i++) {
-    if (db[i][0] === tokenAddress) {
-          var tokenTemplate = db[i][1] + tokenID + db[i][2];
-          var gunTemplate = db[i][3 + parseInt(gunID)];
-        // Get the canvas element
-        var canvas = document.getElementById('combinedCanvas');
-        var ctx = canvas.getContext('2d');
-
-        // Load the images
-        var img1 = new Image();
-        img1.src = tokenTemplate;
-        var img2 = new Image();
-        img2.src = gunTemplate;
-
-        function drawImages() {
-            // Ensure both images are loaded before drawing
-            if (img1.complete && img2.complete) {
-                ctx.drawImage(img1, 0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
-            } else {
-                // If one or both images are not loaded, wait for them to load and then draw
-                img1.onload = img2.onload = function() {
-                    drawImages();
-                };
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow: hidden;
             }
-        }
-
-        // Call drawImages to start drawing images on the canvas
-        drawImages();
-
-          break; 
-    }
- }
-        
-    </script>
-</body>
+            canvas {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
+        <canvas id="combinedCanvas" width="588" height="735"></canvas>
+        <script>
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var tokenAddress = getParameterByName('a');
+            var tokenID = getParameterByName('q');
+            var gunID = getParameterByName('g');
+            var db_token = [["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png"]];
+            var db_skin = [["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"]];
+            for (var i = 0; i < db_token.length; i++) {
+                if (db_token[i][0] === tokenAddress) {
+                    var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
+                    var gunTemplate = db_skin[i][0 + parseInt(gunID)];
+                    var canvas = document.getElementById('combinedCanvas');
+                    var ctx = canvas.getContext('2d');
+                    var img1 = new Image();
+                    img1.src = tokenTemplate;
+                    var img2 = new Image();
+                    img2.src = gunTemplate;
+                    function drawImages() {
+                        if (img1.complete && img2.complete) {
+                            ctx.drawImage(img1, 0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(img2, 0, 0, canvas.width, canvas.height);
+                        } else {
+                            img1.onload = img2.onload = function() {
+                               drawImages();
+                            };
+                        }
+                    }
+                    drawImages();
+                    break; 
+                }
+            }
+            </script>
+    </body>
 </html>
-
