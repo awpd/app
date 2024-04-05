@@ -3,26 +3,9 @@
     <head>
         <title>awpd</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                overflow: hidden;
-            }
-            canvas {
-                max-width: 100%;
-                max-height: 100%;
-                width: auto;
-                height: auto;
-            }
-        </style>
     </head>
-    <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
-        <canvas id="combinedCanvas" width="588" height="735"></canvas>
+    <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
+        <canvas id="combinedCanvas" style="max-width: 100%; max-height: 100%; width: auto; height: auto;" width="588" height="735"></canvas>
         <script>
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
