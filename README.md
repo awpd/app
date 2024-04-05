@@ -5,7 +5,11 @@ Study conviction, dream high, bet more.
 
 Deployed on the most based chain.
 
-URL Parameters
-a: address
-g: gun
-q: token identification
+## URL Parameters
+
+1. **a**: 
+   - contract address
+2. **g**:
+   - skin identifier
+3. **q**:
+   - token identifier
