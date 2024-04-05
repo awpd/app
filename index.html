@@ -51,6 +51,8 @@
                     var img2 = new Image();
                     img2.src = skinTemplate;
                     function drawImages() {
+                        canvas.width = db_token[i][5];
+                        canvas.height = db_token[i][6];
                         if (img1.complete && img2.complete) {
                             ctx.drawImage(img1, 0, 0, db_token[i][5], db_token[i][6]);
                             ctx.drawImage(img2, 0, 0, db_token[i][5], db_token[i][6]);
