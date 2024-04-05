@@ -7,10 +7,9 @@
 </head>
   <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
     <svg id="svgContainer" style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" xmlns="http://www.w3.org/2000/svg" width="588" height="735">
-        <g id="imageGroup">
+    
       <image id="img_0" href="" width="588" height="735"/>
         <image id="img_1" href=""  width="588" height="735"/>
-          </g>
     </svg>
 
 <script>
@@ -47,6 +46,21 @@ function getParameterByName(name, url) {
           break; 
     }
  }
+  // Find the element by its ID
+var element = document.getElementById("svgContainer");
+if (element) {
+    // Create a mouse event
+    var event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+
+    // Dispatch the event on the element
+    element.dispatchEvent(event);
+} else {
+    console.error("Element with ID 'svgContainer' not found.");
+}
 </script>
 </body>
 </html>
