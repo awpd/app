@@ -4,3 +4,8 @@ Sniper rifle known as the ultimate game-changer on the battlefield. Considered a
 Study conviction, dream high, bet more.
 
 Deployed on the most based chain.
+
+URL Parameters
+a: address
+g: gun
+q: token identification
