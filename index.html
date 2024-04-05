@@ -57,7 +57,6 @@
         var img2 = new Image();
         img2.src = gunTemplate;
 
-        // Function to draw images onto canvas
         function drawImages() {
             // Ensure both images are loaded before drawing
             if (img1.complete && img2.complete) {
@@ -65,12 +64,16 @@
                 canvas.height = img1.height;
                 ctx.drawImage(img1, 0, 0);
                 ctx.drawImage(img2, 0, 0);
-            } 
+            } else {
+                // If one or both images are not loaded, wait for them to load and then draw
+                img1.onload = img2.onload = function() {
+                    drawImages();
+                };
+            }
         }
 
         // Call drawImages to start drawing images on the canvas
         drawImages();
-
 
           break; 
     }
