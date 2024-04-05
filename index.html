@@ -17,12 +17,6 @@ var db = [
     ["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png", "https://i.ibb.co/CJFR0Lx/awp-for-milady.png"],
 ];
 
-var svgElement = document.getElementById("svgContainer");
-var serializer = new XMLSerializer();
-var svgString = serializer.serializeToString(svgElement);
-var encodedSvg = btoa(svgString);
-console.log("data:image/svg+xml;base64," + encodedSvg)
-
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -43,6 +37,11 @@ function getParameterByName(name, url) {
           svgImage_0.setAttribute("href", tokenTemplate);
           var svgImage_1 = document.getElementById("img_1");
           svgImage_1.setAttribute("href", gunTemplate);
+          var svgElement = document.getElementById("svgContainer");
+          var serializer = new XMLSerializer();
+          var svgString = serializer.serializeToString(svgElement);
+          var encodedSvg = btoa(svgString);
+          console.log("data:image/svg+xml;base64," + encodedSvg)
           break; 
     }
  }
