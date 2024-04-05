@@ -6,10 +6,6 @@ Study conviction, dream high, bet more.
 Deployed on the most based chain.
 
 ## URL Parameters
-
-1. **a**: 
-   - contract address
-2. **g**:
-   - skin identifier
-3. **q**:
-   - token identifier
+- a: contract address
+- g: skin identifier
+- q: token identifier
