@@ -65,10 +65,7 @@
                 canvas.height = img1.height;
                 ctx.drawImage(img1, 0, 0);
                 ctx.drawImage(img2, 0, 0);
-            } else {
-                // If one or both images are not loaded, wait for them to load and then draw
-                setTimeout(drawImages, 50);
-            }
+            } 
         }
 
         // Call drawImages to start drawing images on the canvas
