@@ -28,7 +28,7 @@
             var rngAddress = Math.floor(Math.random() * db_token.length);
             var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
             var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
-            if (_tokenAddress = 0) {
+            if (_tokenAddress == 0) {
                 tokenAddress = _rngAddress;
                 tokenID = rngToken;
                 skinID = rngSkin;
