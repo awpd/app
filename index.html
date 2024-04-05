@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Layered Images</title>
+      <style>
+        #svgContainer {
+            display: block;
+            -webkit-user-select: none;
+            margin: auto;
+            cursor: zoom-in;
+            background-color: hsl(0, 0%, 90%);
+            transition: background-color 300ms;
+            width: 100%; /* Set the width to 100% */
+        }
+
+        #svgContainer image {
+            max-width: 100%; /* Set max-width of images to 100% */
+            height: auto; /* Ensure images maintain aspect ratio */
+        }
+    </style>
 </head>
   <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
     <svg id="svgContainer" style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" xmlns="http://www.w3.org/2000/svg" width="588" height="735">
