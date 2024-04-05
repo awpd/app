@@ -19,6 +19,8 @@
             var tokenAddress = getParameterByName('a');
             var tokenID = getParameterByName('q');
             var gunID = getParameterByName('g');
+            var rng = Math.floor(Math.random() * db_token.length);
+            console.log(rng);
             var db_token = [["0x5af0d9827e0c53e4799bb226655a1de152a425a5", "https://www.miladymaker.net/milady/", ".png"]];
             var db_skin = [["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"]];
             for (var i = 0; i < db_token.length; i++) {
