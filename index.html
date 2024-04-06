@@ -6,7 +6,9 @@
     </head>
     <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
         <canvas id="combinedCanvas" style="max-width: 100%; max-height: 100%; width: auto; height: auto;"></canvas>
+        <canvas id="dataCanvas" style="display:none;"></canvas>
         <script>
+        
             function getParameterByName(name, url) {
                 if (!url) url = window.location.href;
                 name = name.replace(/[\[\]]/g, "\\$&");
@@ -18,7 +20,7 @@
             }
             var db_token = [
                 ["milady", "https://www.miladymaker.net/milady/", ".png", 10000, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735],
-                ["puppets", "https://nftstorage.link/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 638, 638]
+                ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638]
             ];
             var rngAddress = Math.floor(Math.random() * db_token.length);
             var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
@@ -44,9 +46,28 @@
             for (var i = 0; i < db_token.length; i++) {
                 if (db_token[i][0] === tokenAddress) {
                     var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
+                    fetch(tokenTemplate)
+                        .then(response => response.blob())
+                        .then(blob => 
+                        return new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onloadend = () => resolve(reader.result);
+                            reader.onerror = reject;
+                            reader.readAsDataURL(blob);
+                        });
+                    })
+                    .then(dataUrl => {
+                        var image = new Image();
+                        image.onload = function() {
+                            ctx1.drawImage(image, 0, 0, db_token[i][5], db_token[i][6]);
+                        };
+                        image.src = dataUrl;
+                    })
                     var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
                     var canvas = document.getElementById('combinedCanvas');
                     var ctx = canvas.getContext('2d');
+                    var canvas1 = document.getElementById('dataCanvas');
+					var ctx1 = canvas1.getContext('2d');
                     var img1 = new Image();
                     img1.src = tokenTemplate;
                     var img2 = new Image();
