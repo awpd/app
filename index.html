@@ -61,7 +61,11 @@
 			.then(dataUrl => {
 				var image = new Image();
 				image.onload = function() {
-					ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
+					var centerX = canvas.width / 2;
+        				var centerY = canvas.height / 2;
+				        var startX = centerX - db_token[i][7] / 2;
+				        var startY = centerY - db_token[i][8] / 2;
+					ctx1.drawImage(image, startX, startY, db_token[i][7], db_token[i][8]);
 				};
 				image.src = dataUrl;
 			})
