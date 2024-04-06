@@ -82,7 +82,7 @@
                         canvas.width = db_token[i][7];
                         canvas.height = db_token[i][8];
                         if (img1.complete && img2.complete) {
-                            ctx.drawImage(img1, 0, 0, db_token[i][5], db_token[i][6]);
+                            ctx.drawImage(img1, 0, 0, db_token[i][7], db_token[i][8]);
                             ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
                         } else {
                             img1.onload = img2.onload = function() {
