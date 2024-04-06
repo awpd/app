@@ -18,11 +18,6 @@
                 if (!results[2]) return '';
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
-		function clearCanvas(canvasId) {
-			var canvas = document.getElementById(canvasId);
-			var ctx = canvas.getContext('2d');
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-		}
 
             var db_token = [
                 ["milady", "https://www.miladymaker.net/milady/", ".png", 9733, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735, , 588, 735],
@@ -30,6 +25,8 @@
         	["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/rFkkyk9/AWP-Meme2.png"], 600, 600, 900, 675]
             
 	    ];
+	
+	    
             var rngAddress = Math.floor(Math.random() * db_token.length);
             var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
             var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
@@ -43,6 +40,10 @@
 	    var ctx = canvas.getContext('2d');
 	    var canvas1 = document.getElementById('dataCanvas');
 	    var ctx1 = canvas1.getContext('2d');
+	    function clearCanvas(canvasId) {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	     }
+	    clearCanvas(canvasId)
 	    canvas.addEventListener('click', function(event) {console.log('click');});
             if (_tokenAddress === null) {
                 tokenAddress = db_token[rngAddress][0];
