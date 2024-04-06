@@ -98,8 +98,16 @@
         }
     }
 
+    function showFormattedAlert() {
+        var formattedText = '<div style="color: blue; font-size: 18px;">This is a formatted alert!</div>';
+        var alertContainer = document.createElement('div');
+        alertContainer.innerHTML = formattedText;
+        document.body.appendChild(alertContainer);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         runScript();
+        showFormattedAlert();
     });
 
     var canvas = document.getElementById('combinedCanvas');
