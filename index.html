@@ -18,6 +18,12 @@
                 if (!results[2]) return '';
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
+		function clearCanvas(canvasId) {
+			var canvas = document.getElementById(canvasId);
+			var ctx = canvas.getContext('2d');
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		}
+
             var db_token = [
                 ["milady", "https://www.miladymaker.net/milady/", ".png", 9733, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735, , 588, 735],
                 ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638, 638, 638],
