@@ -7,94 +7,106 @@
     <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14); margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;">
         <canvas id="combinedCanvas" style="max-width: 100%; max-height: 100%; width: auto; height: auto;"></canvas>
         <canvas id="dataCanvas" style="display:none;"></canvas>
-        <script>
-        
-            function getParameterByName(name, url) {
-                if (!url) url = window.location.href;
-                name = name.replace(/[\[\]]/g, "\\$&");
-                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-                if (!results) return null;
-                if (!results[2]) return '';
-                return decodeURIComponent(results[2].replace(/\+/g, " "));
-            }
+<script>
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
-            var db_token = [
-                ["milady", "https://www.miladymaker.net/milady/", ".png", 9733, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735, , 588, 735],
-                ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638, 638, 638],
-        	["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/rFkkyk9/AWP-Meme2.png"], 600, 600, 900, 675]
-            
-	    ];
+    function runScript() {
+        var db_token = [
+            ["milady", "https://www.miladymaker.net/milady/", ".png", 9733, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735, , 588, 735],
+            ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638, 638, 638],
+            ["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/rFkkyk9/AWP-Meme2.png"], 600, 600, 900, 675]
+        ];
 
-            var rngAddress = Math.floor(Math.random() * db_token.length);
-            var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
-            var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
-            var _tokenAddress = getParameterByName('a');
-	    var _skinID = getParameterByName('w');
-            var _tokenID = getParameterByName('p');
-            var tokenAddress;
-            var tokenID;
-            var skinID;
-	    var canvas = document.getElementById('combinedCanvas');
-	    var ctx = canvas.getContext('2d');
-	    var canvas1 = document.getElementById('dataCanvas');
-	    var ctx1 = canvas1.getContext('2d');
-            if (_tokenAddress === null) {
-                tokenAddress = db_token[rngAddress][0];
-                tokenID = rngToken;
-                skinID = rngSkin;
-                console.log(tokenAddress, tokenID, skinID)
-            } else {
-                tokenAddress = _tokenAddress;
-                tokenID = _tokenID;
-                skinID = _skinID;
-            }
-            for (var i = 0; i < db_token.length; i++) {
-                if (db_token[i][0] === tokenAddress) {
-                    var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
-                    fetch(tokenTemplate, {mode: 'no-cors'})
-			.then(response => response.blob())
-			.then(blob => {
-			return new Promise((resolve, reject) => {
-				const reader = new FileReader();
-				reader.onloadend = () => resolve(reader.result);
-				reader.onerror = reject;
-				reader.readAsDataURL(blob);
-			});
-			})
-			.then(dataUrl => {
-				var image = new Image();
-				image.onload = function() {
-					ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
-				};
-				image.src = dataUrl;
-			})
-                    var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
-                    var img1 = new Image();
-                    img1.src = tokenTemplate;
-                    var img2 = new Image();
-                    img2.src = skinTemplate;
-                    function drawImages() {
-                        canvas.width = db_token[i][7];
-                        canvas.height = db_token[i][8];
-                        if (img1.complete && img2.complete) {
-				var centerX = db_token[i][7] / 2;
-        			var centerY = db_token[i][8] / 2;
-			        var startX = centerX - db_token[i][5] / 2;
-			        var startY = centerY - db_token[i][6] / 2;
-                            ctx.drawImage(img1, startX, startY, db_token[i][5], db_token[i][6]);
-                            ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
-                        } else {
-                            img1.onload = img2.onload = function() {
-                               drawImages();
-                            };
-                        }
+        var rngAddress = Math.floor(Math.random() * db_token.length);
+        var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
+        var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
+        var _tokenAddress = getParameterByName('a');
+        var _skinID = getParameterByName('w');
+        var _tokenID = getParameterByName('p');
+        var tokenAddress;
+        var tokenID;
+        var skinID;
+        var canvas = document.getElementById('combinedCanvas');
+        var ctx = canvas.getContext('2d');
+        var canvas1 = document.getElementById('dataCanvas');
+        var ctx1 = canvas1.getContext('2d');
+        if (_tokenAddress === null) {
+            tokenAddress = db_token[rngAddress][0];
+            tokenID = rngToken;
+            skinID = rngSkin;
+            console.log(tokenAddress, tokenID, skinID)
+        } else {
+            tokenAddress = _tokenAddress;
+            tokenID = _tokenID;
+            skinID = _skinID;
+        }
+        for (var i = 0; i < db_token.length; i++) {
+            if (db_token[i][0] === tokenAddress) {
+                var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
+                fetch(tokenTemplate, {
+                        mode: 'no-cors'
+                    })
+                    .then(response => response.blob())
+                    .then(blob => {
+                        return new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onloadend = () => resolve(reader.result);
+                            reader.onerror = reject;
+                            reader.readAsDataURL(blob);
+                        });
+                    })
+                    .then(dataUrl => {
+                        var image = new Image();
+                        image.onload = function() {
+                            ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
+                        };
+                        image.src = dataUrl;
+                    })
+                var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
+                var img1 = new Image();
+                img1.src = tokenTemplate;
+                var img2 = new Image();
+                img2.src = skinTemplate;
+
+                function drawImages() {
+                    canvas.width = db_token[i][7];
+                    canvas.height = db_token[i][8];
+                    if (img1.complete && img2.complete) {
+                        var centerX = db_token[i][7] / 2;
+                        var centerY = db_token[i][8] / 2;
+                        var startX = centerX - db_token[i][5] / 2;
+                        var startY = centerY - db_token[i][6] / 2;
+                        ctx.drawImage(img1, startX, startY, db_token[i][5], db_token[i][6]);
+                        ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
+                    } else {
+                        img1.onload = img2.onload = function() {
+                            drawImages();
+                        };
                     }
-                    drawImages();
-                    break; 
                 }
+                drawImages();
+                break;
             }
+        }
+    }
 
-            </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        runScript();
+    });
+
+    var canvas = document.getElementById('combinedCanvas');
+    canvas.addEventListener('click', function() {
+        runScript();
+    });
+</script>
+
     </body>
 </html>
