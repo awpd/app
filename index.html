@@ -44,7 +44,7 @@
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	     }
 	    clearCanvas(canvasId)
-	    canvas.addEventListener('click', getAwpd());
+	    canvas.addEventListener('click', getAwpd);
             if (_tokenAddress === null) {
                 tokenAddress = db_token[rngAddress][0];
                 tokenID = rngToken;
@@ -101,7 +101,7 @@
                 }
             }
 	    }
-	window.onload = getAwpd();
+	window.onload = getAwpd;
             </script>
     </body>
 </html>
