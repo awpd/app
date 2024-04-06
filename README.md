@@ -5,7 +5,7 @@ Study conviction, dream high, bet more. Deployed on the most based chain."
 
 Specific tokens and skins can be selected using the url parameters.
 
-[awpd.github.io/app](https://awpd.github.io/app/) will generate a random awpd PFP.
+[awpd.github.io/app](https://awpd.github.io/app/) will generate random awpd content.
 
 [https://awpd.github.io/app/?a=milady&w=0&p=1333](https://awpd.github.io/app/?a=milady&g=0&q=1333) will return Milday #1333 with the default skin.
 
