@@ -25,8 +25,7 @@
         	["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/rFkkyk9/AWP-Meme2.png"], 600, 600, 900, 675]
             
 	    ];
-	
-	    function getApwd() {
+
             var rngAddress = Math.floor(Math.random() * db_token.length);
             var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
             var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
@@ -40,10 +39,6 @@
 	    var ctx = canvas.getContext('2d');
 	    var canvas1 = document.getElementById('dataCanvas');
 	    var ctx1 = canvas1.getContext('2d');
-	    function clearCanvas(canvasId) {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-	     }
-	    clearCanvas(canvasId)
 	    canvas.addEventListener('click', getAwpd);
             if (_tokenAddress === null) {
                 tokenAddress = db_token[rngAddress][0];
@@ -100,8 +95,7 @@
                     break; 
                 }
             }
-	    }
-	window.onload = getAwpd;
+
             </script>
     </body>
 </html>
