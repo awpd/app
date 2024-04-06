@@ -19,9 +19,9 @@
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
             var db_token = [
-                ["milady", "https://www.miladymaker.net/milady/", ".png", 10000, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735],
-                ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638],
-        	["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 600, 600]
+                ["milady", "https://www.miladymaker.net/milady/", ".png", 10000, ["https://i.ibb.co/CJFR0Lx/awp-for-milady.png"], 588, 735, , 588, 735],
+                ["puppets", "https://ipfs.io/ipfs/bafybeicwwxoehrxvcy425xcb7ss454gd7menvpsvoqvpnsfeqhpwljiwby/", "", 10001, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 638, 638, 638, 638],
+        	["doodles", "https://media.raritysniper.com/doodles/", "-600.webp", 9998, ["https://i.ibb.co/Jrg99RQ/awp-puppet.png"], 600, 600, 900, 675]
             
 	    ];
             var rngAddress = Math.floor(Math.random() * db_token.length);
@@ -75,11 +75,11 @@
                     var img2 = new Image();
                     img2.src = skinTemplate;
                     function drawImages() {
-                        canvas.width = db_token[i][5];
-                        canvas.height = db_token[i][6];
+                        canvas.width = db_token[i][7];
+                        canvas.height = db_token[i][8];
                         if (img1.complete && img2.complete) {
                             ctx.drawImage(img1, 0, 0, db_token[i][5], db_token[i][6]);
-                            ctx.drawImage(img2, 0, 0, db_token[i][5], db_token[i][6]);
+                            ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
                         } else {
                             img1.onload = img2.onload = function() {
                                drawImages();
