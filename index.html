@@ -48,23 +48,23 @@
             for (var i = 0; i < db_token.length; i++) {
                 if (db_token[i][0] === tokenAddress) {
                     var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
-                    fetch(tokenTemplate)
-					.then(response => response.blob())
-					.then(blob => {
-					return new Promise((resolve, reject) => {
-						const reader = new FileReader();
-						reader.onloadend = () => resolve(reader.result);
-						reader.onerror = reject;
-						reader.readAsDataURL(blob);
-					});
-					})
-					.then(dataUrl => {
-						var image = new Image();
-						image.onload = function() {
-							ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
-						};
-						image.src = dataUrl;
-					})
+                    fetch(tokenTemplate, {mode: 'no-cors'})
+			.then(response => response.blob())
+			.then(blob => {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onloadend = () => resolve(reader.result);
+				reader.onerror = reject;
+				reader.readAsDataURL(blob);
+			});
+			})
+			.then(dataUrl => {
+				var image = new Image();
+				image.onload = function() {
+					ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
+				};
+				image.src = dataUrl;
+			})
                     var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
                     var canvas = document.getElementById('combinedCanvas');
                     var ctx = canvas.getContext('2d');
