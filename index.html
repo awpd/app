@@ -78,7 +78,11 @@
                         canvas.width = db_token[i][7];
                         canvas.height = db_token[i][8];
                         if (img1.complete && img2.complete) {
-                            ctx.drawImage(img1, 0, 0, db_token[i][5], db_token[i][6]);
+				var centerX = db_token[i][7] / 2;
+        			var centerY = db_token[i][8] / 2;
+			        var startX = centerX - db_token[i][5] / 2;
+			        var startY = centerY - db_token[i][6] / 2;
+                            ctx.drawImage(img1, startX, startY, db_token[i][5], db_token[i][6]);
                             ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
                         } else {
                             img1.onload = img2.onload = function() {
