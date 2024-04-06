@@ -15,6 +15,6 @@ Specific tokens and skins can be selected using the url parameters.
 - p: token identifier
 
 ## collections
-- milady maker
-- btc puppets
+- milady maker: milady
+- btc puppets: puppets
 
