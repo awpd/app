@@ -48,7 +48,7 @@
             tokenID = _tokenID;
             skinID = _skinID;
         }
-        console.log("a: " & tokenAddress & "\nw: " & skinID & "\np: " & tokenID & "\nurl: https://awpd.github.io/app/?a=" & tokenAddress & "&w=" & skinID & "&p=" & tokenID)
+        console.log("a: " + tokenAddress + "\nw: " + skinID + "\np: " + tokenID + "\nurl: https://awpd.github.io/app/?a=" + tokenAddress + "&w=" + skinID + "&p=" + tokenID)
         for (var i = 0; i < db_token.length; i++) {
             if (db_token[i][0] === tokenAddress) {
                 var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
