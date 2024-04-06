@@ -47,27 +47,34 @@
                 if (db_token[i][0] === tokenAddress) {
                     var tokenTemplate = db_token[i][1] + tokenID + db_token[i][2];
                     fetch(tokenTemplate)
-                        .then(response => response.blob())
-                        .then(blob => 
-                        return new Promise((resolve, reject) => {
-                            const reader = new FileReader();
-                            reader.onloadend = () => resolve(reader.result);
-                            reader.onerror = reject;
-                            reader.readAsDataURL(blob);
-                        });
-                    })
-                    .then(dataUrl => {
-                        var image = new Image();
-                        image.onload = function() {
-                            ctx1.drawImage(image, 0, 0, db_token[i][5], db_token[i][6]);
-                        };
-                        image.src = dataUrl;
-                    })
+  .then(response => response.blob()) // Get the image data as a Blob
+  .then(blob => {
+    // Convert the Blob to a data URL
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  })
+  .then(dataUrl => {
+    // Create a new image element
+    var image = new Image();
+
+    // When the image has loaded
+    image.onload = function() {
+      // Draw the image onto the canvas
+      ctx1.drawImage(image, 0, 0, db_token[i][5], db_token[i][6]);
+    };
+
+    // Set the image source to the data URL
+    image.src = dataUrl;
+  })
                     var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
                     var canvas = document.getElementById('combinedCanvas');
                     var ctx = canvas.getContext('2d');
                     var canvas1 = document.getElementById('dataCanvas');
-					var ctx1 = canvas1.getContext('2d');
+										var ctx1 = canvas1.getContext('2d');
                     var img1 = new Image();
                     img1.src = tokenTemplate;
                     var img2 = new Image();
