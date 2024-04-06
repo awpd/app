@@ -5,8 +5,7 @@ Study conviction, dream high, bet more. Deployed on the most based chain."
 
 Specific tokens and skins can be selected using the url parameters.
 
-EXAMPLE
-
+## example
 [https://awpd.github.io/app/?a=milady&w=0&p=1333](https://awpd.github.io/app/?a=milady&g=0&q=1333)
 
 ## url parameters
