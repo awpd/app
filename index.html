@@ -26,7 +26,7 @@
             
 	    ];
 	
-	    
+	    function getApwd() {
             var rngAddress = Math.floor(Math.random() * db_token.length);
             var rngSkin = Math.floor(Math.random() * db_token[rngAddress][4].length);
             var rngToken = Math.floor(Math.random() * db_token[rngAddress][3]);
@@ -44,7 +44,7 @@
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	     }
 	    clearCanvas(canvasId)
-	    canvas.addEventListener('click', function(event) {console.log('click');});
+	    canvas.addEventListener('click', getAwpd());
             if (_tokenAddress === null) {
                 tokenAddress = db_token[rngAddress][0];
                 tokenID = rngToken;
@@ -100,9 +100,8 @@
                     break; 
                 }
             }
-	window.onload = function() {
-    		console.log("Window has finished loading!");
-	};
+	    }
+	window.onload = getAwpd();
             </script>
     </body>
 </html>
