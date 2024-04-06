@@ -5,7 +5,19 @@ Study conviction, dream high, bet more.
 
 Deployed on the most based chain.
 
+[awpd.github.io/app](https://awpd.github.io/app/) Will generate a random awpd PFP.
+
+Specific tokens and skins can be selected using the url parameters. For example:
+
+[https://awpd.github.io/app/?a=milady&w=0&p=1333](https://awpd.github.io/app/?a=milady&g=0&q=1333) will return Milday #1333 with the default skin.
+
+
 ## url parameters
-- a: contract address
-- g: skin identifier
-- q: token identifier
+- a: collection
+- w: skin identifier
+- p: token identifier
+
+## collections
+- milady maker
+- btc puppets
+
