@@ -33,6 +33,11 @@
             var tokenAddress;
             var tokenID;
             var skinID;
+	    var canvas = document.getElementById('combinedCanvas');
+	    var ctx = canvas.getContext('2d');
+	    var canvas1 = document.getElementById('dataCanvas');
+	    var ctx1 = canvas1.getContext('2d');
+	    canvas.addEventListener('click', function(event) {console.log('click');});
             if (_tokenAddress === null) {
                 tokenAddress = db_token[rngAddress][0];
                 tokenID = rngToken;
@@ -64,10 +69,6 @@
 				image.src = dataUrl;
 			})
                     var skinTemplate = db_token[i][4][0 + parseInt(skinID)];
-                    var canvas = document.getElementById('combinedCanvas');
-                    var ctx = canvas.getContext('2d');
-                    var canvas1 = document.getElementById('dataCanvas');
-		    var ctx1 = canvas1.getContext('2d');
                     var img1 = new Image();
                     img1.src = tokenTemplate;
                     var img2 = new Image();
