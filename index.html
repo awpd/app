@@ -61,11 +61,7 @@
 			.then(dataUrl => {
 				var image = new Image();
 				image.onload = function() {
-					var centerX = db_token[i][7] / 2;
-        				var centerY = db_token[i][8] / 2;
-				        var startX = centerX - db_token[i][5] / 2;
-				        var startY = centerY - db_token[i][6] / 2;
-					ctx1.drawImage(image, startX, startY, db_token[i][7], db_token[i][8]);
+					ctx1.drawImage(image, 0, 0, db_token[i][7], db_token[i][8]);
 				};
 				image.src = dataUrl;
 			})
@@ -73,7 +69,7 @@
                     var canvas = document.getElementById('combinedCanvas');
                     var ctx = canvas.getContext('2d');
                     var canvas1 = document.getElementById('dataCanvas');
-										var ctx1 = canvas1.getContext('2d');
+		    var ctx1 = canvas1.getContext('2d');
                     var img1 = new Image();
                     img1.src = tokenTemplate;
                     var img2 = new Image();
@@ -82,7 +78,7 @@
                         canvas.width = db_token[i][7];
                         canvas.height = db_token[i][8];
                         if (img1.complete && img2.complete) {
-                            ctx.drawImage(img1, 0, 0, db_token[i][7], db_token[i][8]);
+                            ctx.drawImage(img1, 0, 0, db_token[i][5], db_token[i][6]);
                             ctx.drawImage(img2, 0, 0, db_token[i][7], db_token[i][8]);
                         } else {
                             img1.onload = img2.onload = function() {
